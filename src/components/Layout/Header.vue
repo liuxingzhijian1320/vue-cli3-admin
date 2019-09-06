@@ -1,9 +1,11 @@
 <template>
   <div class="myheader">
     <section class="logo" :class="{'minWidth':isCollapse}">
-      <a href="javascript:;" class="logoLink">
+      <a target="_blank"
+        href="https://github.com/liuxingzhijian1320/vue-cli3-admin.git"
+        class="logoLink">
         <img src="./images/logo.png" alt="logo" />
-        <span v-if="!isCollapse">admin</span>
+        <span v-if="!isCollapse">项目地址</span>
       </a>
     </section>
     <section class="header-content">
@@ -20,10 +22,11 @@
       <section class="cursor dc">
         <el-dropdown @command="handleDropLink" trigger="click">
           <span class="el-dropdown-link">
-            SSSSS<i class="el-icon-arrow-down el-icon--right"></i>
+            {{userInfo.account}}<i
+              class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>
+            <el-dropdown-item command="1">
               安全退出
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -38,8 +41,15 @@
 import screenfull from "screenfull";
 import { mapGetters } from "vuex";
 import BreadCrumb from "./BreadCrumb";
+import Utils from "src/assets/scripts";
+
 export default {
   name: "myheader",
+  data() {
+    return {
+      userInfo: {}
+    };
+  },
   components: {
     BreadCrumb
   },
@@ -48,11 +58,21 @@ export default {
       isCollapse: "app/isCollapse"
     })
   },
+  created() {
+    this.userInfo = Utils.getCookie("DEFAULT_TOKEN")
+      ? JSON.parse(Utils.getCookie("DEFAULT_TOKEN"))
+      : {};
+  },
   methods: {
     collspan() {
       this.$store.commit("app/updateCollapse", !this.isCollapse);
     },
-    handleDropLink(index) {},
+    handleDropLink(index) {
+      if (index == 1) {
+        Utils.delCookie("DEFAULT_TOKEN");
+        this.$router.push("/login");
+      }
+    },
     toggleFull() {
       if (!screenfull.enabled) {
         this.$message({

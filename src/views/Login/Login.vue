@@ -54,7 +54,7 @@ export default {
       if (!password) return this.$message.error("请输入密码");
 
       Utils.setCookie("DEFAULT_TOKEN", JSON.stringify(this.formData), 1);
-      this.$router.push("/");
+      this.$router.push(this.urlQuery);
     }
   }
 };
