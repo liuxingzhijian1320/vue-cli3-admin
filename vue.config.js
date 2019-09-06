@@ -4,7 +4,7 @@ const resolve = function(dir) {
 }
 
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/vue-cli-admin/' : '/',
+    // publicPath: process.env.NODE_ENV === 'production' ? '/vue-cli3-admin/' : '/',
     outputDir: 'dist',
     assetsDir: 'static',
     lintOnSave: false, // 是否开启eslint保存检测

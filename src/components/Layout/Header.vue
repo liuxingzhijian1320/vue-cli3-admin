@@ -29,6 +29,9 @@
             <el-dropdown-item command="1">
               安全退出
             </el-dropdown-item>
+            <el-dropdown-item command="2">
+              我的博客
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </section>
@@ -71,6 +74,8 @@ export default {
       if (index == 1) {
         Utils.delCookie("DEFAULT_TOKEN");
         this.$router.push("/login");
+      } else if (index == 2) {
+        window.open("http://www.zhooson.cn", "_blank");
       }
     },
     toggleFull() {

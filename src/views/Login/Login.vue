@@ -42,6 +42,13 @@ export default {
     };
   },
   created() {
+    this.$notify({
+      title: "",
+      dangerouslyUseHTMLString: true,
+      message: `我的博客地址：<a href="http://www.zhooson.cn" target="blank">http://www.zhooson.cn</>`,
+      duration: 4000
+    });
+
     // Utils.delCookie("DEFAULT_TOKEN");
     if (this.$route.query.redirect) {
       this.urlQuery = this.$route.query.redirect;
