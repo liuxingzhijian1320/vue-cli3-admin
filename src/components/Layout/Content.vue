@@ -28,14 +28,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .mycontent {
   position: fixed;
   top: 50px;
   right: 0;
   bottom: 0;
   left: 200px;
-  z-index: 2003 !important;
+  z-index: 11 !important;
   background: #f0f3f4;
   -webkit-transition: all 0.3s;
   transition: left 0.3s;
