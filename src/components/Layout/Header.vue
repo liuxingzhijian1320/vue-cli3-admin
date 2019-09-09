@@ -100,7 +100,7 @@ export default {
   width: 100%;
   height: 50px;
   background: #fff;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   .logo {
     overflow: hidden;
     width: 200px;

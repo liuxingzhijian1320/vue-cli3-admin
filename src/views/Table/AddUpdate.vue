@@ -12,29 +12,19 @@
       <el-form-item>
         <el-button type="primary" @click="submitForm('numberValidateForm')">提交
         </el-button>
-        页面可以往下滑动
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-        <br>
-        <el-button type="primary" @click="submitForm('numberValidateForm')">提交
+
+        <el-button type="primary" @click="goHandler">{{!showScroll?'滚动':'一屏高度'}}
         </el-button>
+
+        <div v-if="showScroll">
+          <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+          <br>
+          <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+          <br>
+          <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+          <br>
+
+        </div>
       </el-form-item>
     </el-form>
   </div>
@@ -45,6 +35,7 @@ export default {
   name: "AddUpdate2",
   data() {
     return {
+      showScroll: false,
       numberValidateForm: {
         age: ""
       }
@@ -54,6 +45,9 @@ export default {
   methods: {
     submitForm(formName) {
       this.$router.back(-1);
+    },
+    goHandler() {
+      this.showScroll = !this.showScroll;
     }
   }
 };
