@@ -78,7 +78,17 @@ export default [{
                     title: '关于我们'
                 },
                 component: () =>
-                    import ( /* webpackChunkName: "component" */ "../views/About/About.vue")
+                    import ( /* webpackChunkName: "component" */ "../views/About/About.vue"),
+                children: [{
+                    path: '/about/add',
+                    name: 'aboutAdd',
+                    hidden: true,
+                    component: () =>
+                        import ( /* webpackChunkName: "component" */ "../views/About/Add.vue"),
+                    meta: {
+                        title: '创建'
+                    }
+                }, ]
             }
         ]
     },

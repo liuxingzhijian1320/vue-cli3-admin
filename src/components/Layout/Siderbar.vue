@@ -8,14 +8,14 @@
 
         <template v-for="(item) in routelist">
 
-          <template v-if="!item.children">
+          <template v-if="!item.children || (item.children.length==0)">
             <el-menu-item :index="item.path">
               <i class="el-icon-menu"></i>
               <span slot="title">{{item.meta.title}}</span>
             </el-menu-item>
           </template>
 
-          <template v-if="item.children">
+          <template v-if="item.children.length>0">
             <el-submenu :index="item.path">
               <template slot="title">
                 <i class="el-icon-location"></i>

@@ -1,7 +1,17 @@
 import routes from "src/router/routes.js";
 
 function filterRoutes(data) {
-    return data.find(item => !item.hidden).children;
+    return data.find(item => {
+        if (!item.hidden) {
+            return item.children.filter(code => {
+                if (code.children) {
+                    code.children = code.children.filter(foo => !foo.hidden)
+                } else {
+                    code.children = []
+                }
+            })
+        }
+    }).children
 }
 
 const state = {
