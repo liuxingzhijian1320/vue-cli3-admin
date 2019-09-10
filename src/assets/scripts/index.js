@@ -31,4 +31,18 @@ export default class Utils {
         }
     }
 
+    // 节流
+    static throttle(callBack, time) {
+        let timer = null;
+        //timer状态要常驻内存，这里做了一个闭包
+        return function() {
+            if (!timer) {
+                timer = setTimeout(() => {
+                    callBack()
+                    timer = null
+                }, time)
+            }
+        }
+    }
+
 }

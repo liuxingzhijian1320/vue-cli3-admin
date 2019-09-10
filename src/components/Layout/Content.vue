@@ -12,6 +12,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import Utils from "src/assets/scripts";
 export default {
   name: "mycontent",
   data() {
@@ -20,14 +21,18 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      window.onresize = () => {
-        // _.throttle(() => {
-        // this.pageheight = window.innerHeight - 50 - 36 * 2;
-        // console.info(this.pageheight);
-        // }, 300);
-      };
-    });
+    /**
+     *  50 header 高度
+     *  1  mycontent margin-top: 1px;
+     *  20 mycontent padding:20 0;
+     */
+    window.addEventListener(
+      "resize",
+      Utils.throttle(() => {
+        this.pageheight = window.innerHeight - 50 - 20 - 1;
+      }, 500),
+      false
+    );
   },
   computed: {
     ...mapGetters({
@@ -43,23 +48,23 @@ export default {
   top: 50px;
   right: 0;
   bottom: 0;
-  padding: 0 20px;
   left: 200px;
   z-index: 11 !important;
-  background: #f0f3f4;
-  -webkit-transition: all 0.3s;
   overflow: hidden;
-  transition: left 0.3s;
   box-sizing: border-box;
   margin-top: 1px;
+  padding: 0 20px;
+  background: #f0f3f4;
+  -webkit-transition: all 0.3s;
+  transition: left 0.3s;
   &.minWidth {
     left: 64px !important;
   }
   .main {
-    padding-bottom: 20px;
-    background: #fff;
     box-sizing: border-box;
     margin-top: 20px;
+    padding-bottom: 20px;
+    background: #fff;
   }
   .el-scrollbar {
     height: 100%;
